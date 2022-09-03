@@ -5,6 +5,7 @@ export const Container = styled.div`
     border-bottom: 1px solid ${({ theme }) => theme.COLORS.FC_BORDER};
     position: fixed;
     top: 0;
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_MAIN};
     
     .header {
     max-width: 1137px;

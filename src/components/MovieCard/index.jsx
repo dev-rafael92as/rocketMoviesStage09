@@ -2,7 +2,7 @@ import { Tag } from "../Tag";
 import { Container } from "./styles";
 import { AiFillStar, AiOutlineStar} from "react-icons/ai"
 
-export function CardMovie({ data, ...rest }) {
+export function MovieCard({ data, ...rest }) {
     return (
         <Container>
             <h2>{data.title}</h2>

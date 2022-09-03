@@ -32,8 +32,24 @@ export const Container = styled.div`
         section {
             height: 716px;
             overflow: auto;
-            border: 1px solid red;
+
+            ::-webkit-scrollbar-track {
+                background-color: transparent;
+                
+            }
+            ::-webkit-scrollbar-thumb {
+                background-color: ${({ theme }) => theme.COLORS.FC_PINK};
+                border-radius: 20px;
+                
+            }
+
+            ::-webkit-scrollbar {
+                background-color: transparent;
+                width: 8px;
+                height: 96px;
+            }
         }
+
     }
     
 `
