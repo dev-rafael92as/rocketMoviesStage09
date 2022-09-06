@@ -7,6 +7,8 @@ export const Container = styled.button`
     border-radius: 10px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    border: none;
     gap: 0 8px;
 
 `

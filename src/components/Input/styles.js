@@ -2,15 +2,21 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     width: 100%;
+    display: flex;
+    align-items: center;
+
+    background: ${({ theme }) => theme.COLORS.BACKGROUND_INPUT};
+    color: ${({ theme }) => theme.COLORS.FC_GRAY1};
+    border-radius: 10px;
 
     > input {
         border: none;
         width: 100%;
-        background: ${({ theme }) => theme.COLORS.BACKGROUND_INPUT};
-        border-radius: 10px;
+        background: transparent;
+        
         height: 56px;
         padding: 19px 24px;
-        color: ${({ theme }) => theme.COLORS.FC_GRAY1};
+        
         font-weight: 400;
         font-size: 14px;
         line-height: 18px;
@@ -22,5 +28,9 @@ export const Container = styled.div`
         font-size: 14px;
         line-height: 18px;
         color: ${({ theme }) => theme.COLORS.FC_GRAY1};
+    }
+
+    > svg {
+        margin-left: 16px;
     }
 `
