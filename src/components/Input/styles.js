@@ -8,11 +8,13 @@ export const Container = styled.div`
     background: ${({ theme }) => theme.COLORS.BACKGROUND_INPUT};
     color: ${({ theme }) => theme.COLORS.FC_GRAY1};
     border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
 
     > input {
         border: none;
         width: 100%;
         background: transparent;
+        font-family: 'Roboto', sans-serif;
         
         height: 56px;
         padding: 19px 24px;

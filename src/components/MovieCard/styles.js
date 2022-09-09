@@ -36,5 +36,6 @@ export const Container = styled.div`
         overflow: hidden;
         text-overflow: ellipsis;
         margin-bottom: 30px;
+        font-family: 'Roboto', sans-serif;
     }
 `

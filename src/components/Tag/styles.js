@@ -5,6 +5,7 @@ export const Container = styled.div`
     border-radius: 8px;
     padding: 5px 16px;
     width: fit-content;
+    font-family: 'Roboto', sans-serif;
 
     font-weight: 400;
     font-size: 12px;
