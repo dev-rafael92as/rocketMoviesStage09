@@ -35,12 +35,10 @@ export const Container = styled.div`
 
             ::-webkit-scrollbar-track {
                 background-color: transparent;
-                
             }
             ::-webkit-scrollbar-thumb {
                 background-color: ${({ theme }) => theme.COLORS.FC_PINK};
                 border-radius: 20px;
-                
             }
 
             ::-webkit-scrollbar {

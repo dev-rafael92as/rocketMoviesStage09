@@ -15,6 +15,7 @@ export const Container = styled.div`
         width: 100%;
         background: transparent;
         font-family: 'Roboto', sans-serif;
+        color: ${({ theme }) => theme.COLORS.FC_GRAY1};
         
         height: 56px;
         padding: 19px 24px;

@@ -5,12 +5,13 @@ import { ButtonText } from "../../components/ButtonText"
 import { Input } from "../../components/Input";
 import { Textarea } from "../../components/Textarea";
 import { TagItem } from "../../components/TagItem";
+import { Button } from "../../components/Button";
 
-export function Preview() {
+export function CreateMovie() {
     return (
         <Container>
             <Header />
-            <main>
+            <form>
             <ButtonText icon={FiArrowLeft} title="Voltar"/>
             <h1>
                 Novo filme
@@ -33,7 +34,12 @@ export function Preview() {
                 <TagItem value="React" isNew={false} />
                 <TagItem value="Novo Marcador" isNew={true} />
             </div>
-            </main>
+
+            <div className="button-container">
+                <button className="btn-delete">Excluir</button>
+                <Button title="Salvar alterações" />
+            </div>
+            </form>
         </Container>
     )
 }
