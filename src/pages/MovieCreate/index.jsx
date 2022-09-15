@@ -7,7 +7,7 @@ import { Textarea } from "../../components/Textarea";
 import { TagItem } from "../../components/TagItem";
 import { Button } from "../../components/Button";
 
-export function CreateMovie() {
+export function MovieCreate() {
     return (
         <Container>
             <Header />
