@@ -12,5 +12,6 @@ export default {
         FC_WHITE: '#FFFFFF',
         FC_NAME_LOGIN: '#F4EDE8',
         FC_BORDER: '#3E3B47',
+        FC_SIGNIN: '#CAC4CF'
     }
 }
