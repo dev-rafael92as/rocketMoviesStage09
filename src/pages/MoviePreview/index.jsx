@@ -11,7 +11,7 @@ export function MoviePreview() {
             <Header />
 
             <CardInfo>
-                <ButtonText icon={FiArrowLeft} title="Voltar"/>
+                <ButtonText to="/" icon={FiArrowLeft} title="Voltar"/>
 
                 <div className="container-name-review">
                     <h1>Interestellar</h1>

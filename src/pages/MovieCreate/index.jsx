@@ -12,7 +12,7 @@ export function MovieCreate() {
         <Container>
             <Header />
             <form>
-            <ButtonText icon={FiArrowLeft} title="Voltar"/>
+            <ButtonText to="/" icon={FiArrowLeft} title="Voltar"/>
             <h1>
                 Novo filme
             </h1>

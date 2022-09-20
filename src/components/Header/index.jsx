@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Input } from "../Input";
 import { Container } from "./styles";
 
@@ -5,7 +6,7 @@ export function Header() {
     return (
         <Container>
             <div className="header">
-                <a href="#">RocketMovies</a>
+                <Link to="/">RocketMovies</Link>
 
                 <Input placeholder="Pesquisar pelo título" />
 
@@ -14,7 +15,9 @@ export function Header() {
                         <p>Rafael Barros</p>
                         <a href="#">Sair</a>
                     </div>
-                    <img src="https://github.com/dev-rafael92as.png" alt="Miniatura Logo Header" />
+                    <Link to="/profile">
+                        <img src="https://github.com/dev-rafael92as.png" alt="Miniatura Logo Header" />
+                    </Link>
                 </div>
             </div>
         </Container>

@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export const Container = styled.div`
+export const Container = styled(Link)`
+    display: block;
     background: ${({ theme }) => theme.COLORS.BACKGROUND_PINK};
     border-radius: 16px;
     width: 100%;
@@ -37,5 +39,6 @@ export const Container = styled.div`
         text-overflow: ellipsis;
         margin-bottom: 30px;
         font-family: 'Roboto', sans-serif;
+        color: ${({ theme }) => theme.COLORS.FC_GRAY1};
     }
 `

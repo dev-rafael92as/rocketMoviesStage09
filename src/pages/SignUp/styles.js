@@ -48,7 +48,16 @@ export const Container = styled.div`
             }
         }
 
-        button {
-            margin: 24px auto;
+        .container-buttons {
+            button {
+                margin: 24px auto;
+            }
+
+            a {
+                color: ${({ theme }) => theme.COLORS.FC_PINK};
+                justify-content: center;
+            }
         }
+
+ 
 `

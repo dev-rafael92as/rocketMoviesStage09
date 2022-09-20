@@ -4,6 +4,7 @@ import { FiMail, FiLock } from "react-icons/fi";
 import { Button } from "../../components/Button";
 import { ButtonText } from "../../components/ButtonText";
 import  Imgbg from "../../assets/img-signIn.png"
+import { Link } from "react-router-dom";
 
 export function SignIn() {
     return (
@@ -20,8 +21,10 @@ export function SignIn() {
                     <Input type="email" placeholder="E-mail" icon={FiMail} />
                     <Input type="password" placeholder="Senha" icon={FiLock} />
 
-                    <Button title="Entrar" />
-                    <ButtonText title="Criar conta" />
+                    <div className="container-buttons">
+                        <Button title="Entrar" />
+                        <Link to="/register">Criar conta</Link>
+                    </div>
                 </div>
             </div>
             <img src={Imgbg} alt="" />

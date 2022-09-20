@@ -4,7 +4,7 @@ import { AiFillStar, AiOutlineStar} from "react-icons/ai"
 
 export function MovieCard({ data, ...rest }) {
     return (
-        <Container>
+        <Container {...rest}>
             <h2>{data.title}</h2>
             <div className="container-review">
                 <AiFillStar />

@@ -47,9 +47,15 @@ export const Container = styled.div`
             margin-bottom: 8px;
             }
         }
+        .container-buttons {
+            text-align: center;
+            button {
+                margin: 24px auto;
+            }
 
-        button {
-            margin: 24px auto;
+            a {
+                color: ${({ theme }) => theme.COLORS.FC_PINK};
+            }
         }
-
+        
 `

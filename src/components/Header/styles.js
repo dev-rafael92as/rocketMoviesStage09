@@ -55,7 +55,7 @@ export const Container = styled.div`
             align-items: center;
             gap: 0 9px;
 
-            > img {
+            img {
                 border-radius: 50%;
                 width: 64px;
                 height: 64px;
