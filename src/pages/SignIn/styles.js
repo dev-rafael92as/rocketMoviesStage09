@@ -32,6 +32,24 @@ export const Container = styled.div`
             font-size: 14px;
             line-height: 18px;
             color: ${({ theme }) => theme.COLORS.FC_SIGNIN};
+            margin-bottom: 48px;
         }
-    }
+
+        .subtitle {
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 32px;
+            margin-bottom: 48px;
+            color: ${({ theme }) => theme.COLORS.FC_NAME_LOGIN};
+        }
+
+        div {
+            margin-bottom: 8px;
+            }
+        }
+
+        button {
+            margin: 24px auto;
+        }
+
 `
