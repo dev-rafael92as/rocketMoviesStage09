@@ -6,11 +6,19 @@ import { ButtonText } from "../../components/ButtonText";
 import  Imgbg from "../../assets/img-signIn.png"
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
+import { useState } from "react";
 
 export function SignIn() {
+    const [ email, setEmail ] = useState("");
+    const [ password, setPassword ] = useState("");
+    
+    const { signIn } = useAuth();
 
-    const data = useAuth();
-    console.log("Meu Contexto =>", data)
+
+    const handleSignIn = () => {
+        signIn({email, password})
+    }
+
 
     return (
         <Container>
@@ -23,11 +31,24 @@ export function SignIn() {
                         Faça seu login
                     </p>
 
-                    <Input type="email" placeholder="E-mail" icon={FiMail} />
-                    <Input type="password" placeholder="Senha" icon={FiLock} />
+                    <Input 
+                        type="email" 
+                        placeholder="E-mail" 
+                        icon={FiMail} 
+                        onChange={e => setEmail(e.target.value)}
+                    />
+                    <Input 
+                        type="password" 
+                        placeholder="Senha" 
+                        icon={FiLock} 
+                        onChange={e => setPassword(e.target.value)}    
+                    />
 
                     <div className="container-buttons">
-                        <Button title="Entrar" />
+                        <Button 
+                            title="Entrar" 
+                            onClick={handleSignIn}
+                        />
                         <Link to="/register">Criar conta</Link>
                     </div>
                 </div>
