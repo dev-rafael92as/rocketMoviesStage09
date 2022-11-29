@@ -5,8 +5,13 @@ import { Button } from "../../components/Button";
 import { ButtonText } from "../../components/ButtonText";
 import  Imgbg from "../../assets/img-signIn.png"
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/auth";
 
 export function SignIn() {
+
+    const data = useAuth();
+    console.log("Meu Contexto =>", data)
+
     return (
         <Container>
             <div className="container-acess">
