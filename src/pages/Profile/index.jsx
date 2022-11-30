@@ -4,8 +4,27 @@ import { FiArrowLeft, FiLock, FiUser, FiMail } from "react-icons/fi";
 import { BiCamera } from "react-icons/bi";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button"
+import { useAuth } from "../../hooks/auth";
+import { useState } from "react";
 
 export function Profile() {
+    const { user, updateProfile } = useAuth()
+
+    const [ name, setName ] = useState(user.name);
+    const [ email, setEmail ] = useState(user.email);
+    const [ passwordOld, setPasswordOld  ] = useState();
+    const [ passwordNew, setPasswordNew  ] = useState();
+
+    async function handleUpdate() {
+        const user = {
+            name,
+            email,
+            password: passwordNew,
+            old_password: passwordOld
+        }
+        await updateProfile({user})
+    }
+
     return (
         <Container>
             <header>
@@ -23,14 +42,39 @@ export function Profile() {
                     </label>
                 </div>
                 <div className="form-input">
-                    <Input icon={FiUser} type="text" placeholder="Nome"/>
-                    <Input icon={FiMail} type="email" placeholder="E-mail"/>
+                    <Input 
+                        icon={FiUser} 
+                        type="text" 
+                        placeholder="Nome"
+                        onChange={e => setName(e.target.value)}
+                        value={name}    
+                    />
+                    <Input 
+                        icon={FiMail} 
+                        type="email" 
+                        placeholder="E-mail"
+                        onChange={e => setEmail(e.target.value)}
+                        value={email}    
+                    />
                 </div>
                 <div className="form-input">
-                    <Input icon={FiLock} type="password" placeholder="Senha Antiga"/>
-                    <Input icon={FiLock} type="password" placeholder="Nova Senha"/>
+                    <Input 
+                        icon={FiLock} 
+                        type="password" 
+                        placeholder="Senha Antiga"
+                        onChange={e => setPasswordOld(e.target.value)}    
+                    />
+                    <Input 
+                        icon={FiLock} 
+                        type="password" 
+                        placeholder="Nova Senha"
+                        onChange={e => setPasswordNew(e.target.value)}    
+                    />
                 </div>
-                <Button title="Salvar" />
+                <Button 
+                    title="Salvar" 
+                    onClick={handleUpdate}    
+                />
             </Form>
         </Container>
     )
