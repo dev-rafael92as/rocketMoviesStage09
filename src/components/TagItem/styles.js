@@ -5,11 +5,26 @@ export const Container = styled.div`
     padding: 16px;
     border-radius: 10px;
     border: ${({ isNew, theme }) => isNew ? `1px dashed ${theme.COLORS.FC_GRAY1}` : "none"};
-    font-family: 'Roboto', sans-serif;
-
+    
     display: flex;
     align-items: center;
     gap: 0 16px;
+    
+    input {
+        font-family: 'Roboto', sans-serif;
+        border: none;
+        display: block;
+        width: min-content;
+        background-color: transparent;
+        color: ${({ theme }) => theme.COLORS.FC_GRAY1};
+    }
+
+    button {
+        display: flex;
+        align-items: center;
+        border: none;
+        background: transparent;
+    }
 
     svg {
         color: ${({ theme }) => theme.COLORS.FC_PINK};

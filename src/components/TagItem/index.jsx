@@ -1,11 +1,21 @@
 import { Container } from "./styles";
 import { FiPlus, FiX } from "react-icons/fi"
 
-export function TagItem({value, isNew, ...rest}) {
+export function TagItem({value, isNew, onClick, ...rest}) {
     return (
-        <Container isNew={isNew} {...rest}>
-            {value}
-            {isNew ? <FiPlus/> : <FiX />}
+        <Container isNew={isNew}>
+            <input
+                type="text" 
+                value={value}
+                readOnly={!isNew}
+                {...rest} 
+            />
+            <button
+                type="button"
+                onClick={onClick}
+            >
+                {isNew ? <FiPlus/> : <FiX />}
+            </button>
         </Container>
     )
 }
