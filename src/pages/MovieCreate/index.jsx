@@ -7,14 +7,18 @@ import { Textarea } from "../../components/Textarea";
 import { TagItem } from "../../components/TagItem";
 import { Button } from "../../components/Button";
 import { useState } from "react";
+import { api } from "../../services/api";
+import { useNavigate } from "react-router-dom";
 
 export function MovieCreate() {
     const [ title, setTitle ] = useState('');
-    const [ review, setReview ] = useState('');
-    const [ observation, setObservation ] = useState('');
+    const [ rating, setRating ] = useState('');
+    const [ description, setDescription ] = useState('');
 
     const [ tags, setTags ] = useState([]);
     const [ newTag, setNewTag ] = useState('');
+
+    const navigate = useNavigate()
 
     const handleAddTag = () => {
         setTags(prevState => [...prevState, newTag])
@@ -22,8 +26,39 @@ export function MovieCreate() {
     }
 
     const handleRemoveTag = (deleted) => {
-        console.log("Passei")
         setTags(prevState => prevState.filter(tag => tag !== deleted))
+    }
+
+    async function handleNewMovie() {
+        if (!title) {
+            alert("Faltou o título do filme, preencha para poder cadastrar :)")
+            return
+        }
+
+        if (!rating) {
+            alert("Faltou a nota do filme, preencha para poder cadastrar :)")
+            return
+        }
+
+        if (!description) {
+            alert("Faltou a descrição do filme, preencha para poder cadastrar :)")
+            return
+        }
+
+        if (newTag) {
+            alert("Você deixou uma tag sem cadastrar, clique para adicionar e prosseguir!")
+            return
+        }
+
+        await api.post("/notes", {
+            title,
+            description,
+            rating,
+            tags
+        })
+
+        alert("Filme adicionado com sucesso!")
+        navigate("/")
     }
 
     return (
@@ -37,16 +72,19 @@ export function MovieCreate() {
             <div className="input-container">
                 <Input 
                     placeholder="Título"
-                    // onChange={e => setTitle(e.target.valeu)}    
+                    onChange={e => setTitle(e.target.value)}    
                 />
                 <Input 
                     placeholder="Sua nota (de 0 a 5)"
-                    // onChange={e => setReview(e.target.value)}    
+                    type="number"
+                    max="5"
+                    min="0"
+                    onChange={e => setRating(e.target.value)}    
                 />
             </div>
             <Textarea 
                 placeholder="Observações" 
-                // onChange={e => setObservation(e.target.value)}    
+                onChange={e => setDescription(e.target.value)}    
             />
         
             <h2>
@@ -74,7 +112,7 @@ export function MovieCreate() {
 
             <div className="button-container">
                 <button className="btn-delete">Excluir</button>
-                <Button title="Salvar alterações" />
+                <Button onClick={handleNewMovie} title="Salvar alterações" />
             </div>
             </form>
         </Container>
