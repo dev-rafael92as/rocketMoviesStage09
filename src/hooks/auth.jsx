@@ -65,7 +65,7 @@ function AuthProvider({ children }) {
         if ( user && token ) {
             api.defaults.headers.common["Authorization"] = `Bearer ${token}`
 
-            setData({ token, user: JSON.stringify(user)})
+            setData({ token, user: JSON.parse(user)})
         }
     }, [])
 
