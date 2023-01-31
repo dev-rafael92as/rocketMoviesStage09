@@ -4,8 +4,24 @@ import { ButtonText } from "../../components/ButtonText";
 import { FiArrowLeft } from "react-icons/fi";
 import { AiFillStar, AiOutlineStar, AiOutlineClockCircle} from "react-icons/ai";
 import { Tag } from "../../components/Tag"
+import { useAuth } from "../../hooks/auth";
+import { api } from "../../services/api";
 
 export function MoviePreview() {
+    const { moviePreviewPage, user } = useAuth()
+
+    const formattedDate = (dateString) => {
+        const dataHoraObjeto = new Date(dateString);
+        const dataFormatada = dataHoraObjeto?.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+        return dataFormatada
+    }
+
+    const formattedOclok = (oclockString) => {
+        const dataHoraObjeto = new Date(oclockString);
+        const horaFormatada = dataHoraObjeto?.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }).replace(/:/g, 'h');
+        return horaFormatada
+    }
+
     return (
         <Container>
             <Header />
@@ -14,51 +30,62 @@ export function MoviePreview() {
                 <ButtonText to="/" icon={FiArrowLeft} title="Voltar"/>
 
                 <div className="container-name-review">
-                    <h1>Interestellar</h1>
+                    <h1>{moviePreviewPage.title}</h1>
                     <div>
-                        <AiFillStar />
-                        <AiFillStar />
-                        <AiFillStar />
-                        <AiFillStar />
-                        <AiOutlineStar />
+                        {moviePreviewPage.rating === 1 ? 
+                        <>
+                            <AiFillStar />
+                            <AiOutlineStar />
+                            <AiOutlineStar />
+                            <AiOutlineStar />
+                            <AiOutlineStar />
+                        </> : moviePreviewPage.rating === 2 ? 
+                        <>
+                            <AiFillStar />
+                            <AiFillStar />
+                            <AiOutlineStar />
+                            <AiOutlineStar />
+                            <AiOutlineStar />
+                        </> : moviePreviewPage.rating === 3 ? 
+                        <>
+                            <AiFillStar />
+                            <AiFillStar />
+                            <AiFillStar />
+                            <AiOutlineStar />
+                            <AiOutlineStar />
+                        </> : moviePreviewPage.rating === 4 ? 
+                        <>
+                            <AiFillStar />
+                            <AiFillStar />
+                            <AiFillStar />
+                            <AiFillStar />
+                            <AiOutlineStar />
+                        </> : <>
+                            <AiFillStar />
+                            <AiFillStar />
+                            <AiFillStar />
+                            <AiFillStar />
+                            <AiFillStar />
+                        </>
+                        }
                     </div>
                 </div>
                 <div className="container-info-acess">
-                    <img src="https://github.com/dev-rafael92as.png" alt="Imagem Logo Perfil" />
-                    <p>Por Rafael Barros</p>
+                    <img src={`${api.defaults.baseURL}/files/${user.avatar}`} alt="Imagem Logo Perfil" />
+                    <p>Por {user.name}</p>
                     < AiOutlineClockCircle />
-                    <p>14/09/2022 às 21h00</p>
+                    <p>{formattedDate(moviePreviewPage.created_at)} às {formattedOclok(moviePreviewPage.created_at)}</p>
                 </div>
 
                 <div className="container-tags__movie-preview">
-                    <Tag title="Drama"/>
-                    <Tag title="Romance"/>
+                    {moviePreviewPage.tags.map((tagName) => (
+                        <Tag title={tagName.name}/>
+                    ))}
                 </div>
 
                 <div className="container-text__mobie-preview">
                     <p>
-                        Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de 
-                        data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de 
-                        dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma que tenta se comunicar 
-                        com ela. Pai e filha descobrem que o "fantasma" é uma inteligência desconhecida que está enviando 
-                        mensagens codificadas através de radiação gravitacional, deixando coordenadas em binário que os levam 
-                        até uma instalação secreta da NASA liderada pelo professor John Brand. O cientista revela que um 
-                        buraco de minhoca foi aberto perto de Saturno e que ele leva a planetas que podem oferecer condições 
-                        de sobrevivência para a espécie humana. As "missões Lázaro" enviadas anos antes identificaram três 
-                        planetas potencialmente habitáveis orbitando o buraco negro Gargântua: Miller, Edmunds e Mann – 
-                        nomeados em homenagem aos astronautas que os pesquisaram. Brand recruta Cooper para pilotar a nave 
-                        espacial Endurance e recuperar os dados dos astronautas; se um dos planetas se mostrar habitável, 
-                        a humanidade irá seguir para ele na instalação da NASA, que é na realidade uma enorme estação espacial. 
-                        A partida de Cooper devasta Murphy.
-
-                        Além de Cooper, a tripulação da Endurance é formada pela bióloga Amelia, filha de Brand; o cientista 
-                        Romilly, o físico planetário Doyle, além dos robôs TARS e CASE. Eles entram no buraco de minhoca e 
-                        se dirigem a Miller, porém descobrem que o planeta possui enorme dilatação gravitacional temporal 
-                        por estar tão perto de Gargântua: cada hora na superfície equivale a sete anos na Terra. Eles entram 
-                        em Miller e descobrem que é inóspito já que é coberto por um oceano raso e agitado por ondas 
-                        enormes. Uma onda atinge a tripulação enquanto Amelia tenta recuperar os dados de Miller, matando 
-                        Doyle e atrasando a partida. Ao voltarem para a Endurance, Cooper e Amelia descobrem que 23 anos 
-                        se passaram.
+                        {moviePreviewPage.description}
                     </p>
                 </div>
             </CardInfo>

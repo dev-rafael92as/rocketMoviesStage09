@@ -50,7 +50,7 @@ export function MovieCreate() {
             return
         }
 
-        await api.post("/notes", {
+        await api.post("/movie_notes", {
             title,
             description,
             rating,
