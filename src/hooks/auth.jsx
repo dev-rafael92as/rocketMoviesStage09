@@ -5,6 +5,7 @@ const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
     const [ data, setData ] = useState({});
+    const [ moviePreviewPage, setMoviePreviewPage ] = useState();
 
     async function signIn({ email, password }) {
         try {
@@ -71,7 +72,9 @@ function AuthProvider({ children }) {
 
     return(
         <AuthContext.Provider
-            value={{ 
+            value={{
+                moviePreviewPage,
+                setMoviePreviewPage,
                 signIn, 
                 user: data.user, 
                 updateProfile,
