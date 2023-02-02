@@ -9,18 +9,17 @@ import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
 
 export function Home() {
-    const { setMoviePreviewPage } = useAuth()
+    const { setMoviePreviewPage, search } = useAuth()
     const [ movies, setMovies ] = useState([])
 
     useEffect(() => {
         async function fetchMovies() {
-            const response = await api.get("/movie_notes?title")
+            const response = await api.get(`/movie_notes?title=${search}`)
             setMovies(response.data)
         }
-
         fetchMovies()
-    },[]
-    )
+    },[search])
+
     return (
         <Container>
             <Header />

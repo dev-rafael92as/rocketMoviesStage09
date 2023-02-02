@@ -4,10 +4,11 @@ import { api } from "../../services/api";
 import { Input } from "../Input";
 import { Container } from "./styles";
 import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
+import { useState } from "react";
 
 export function Header() {
 
-    const { signOut, user } = useAuth()
+    const { signOut, user, setSearch } = useAuth()
 
     const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
 
@@ -16,7 +17,10 @@ export function Header() {
             <div className="header">
                 <Link to="/">RocketMovies</Link>
 
-                <Input placeholder="Pesquisar pelo título" />
+                <Input 
+                    placeholder="Pesquisar pelo título" 
+                    onChange={e => setSearch(e.target.value)}    
+                />
 
                 <div className="container-acess">
                     <div className="container-login">
